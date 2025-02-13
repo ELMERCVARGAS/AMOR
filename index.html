@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>ECV</title>
+      <link rel="stylesheet" href="css/index.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+      <div class="wrapper">
+            <header>
+                  <nav>
+                        <div class="menu-icon">
+                              <i class="fa fa-bars fa-2x"></i>
+                        </div>
+
+                        <div class="logo">
+                              <img src="img/log.png" height="60px">
+                        </div>
+
+                        <div class="menu">
+                              <ul>
+                                    <li><a href="index.html">INICIO</a></li>
+                                    <li><a href="personal.html">PERSONAL</a></li>
+                                    <li><a href="tabla.html">FAMILIA</a></li>
+                                    <li><a href="login.html">LOGIN</a></li>
+                              </ul>
+                        </div>
+                  </nav>
+            </header>
+            <div class="content">
+                  <p>
+                        ELMER CALLISAYA VARGAS JOVEN DE 18 AÑOS ESTUDIANTE DE LA CARRERA DE INGENIERIA COMERCIAL EN LA UNIVERSIDAD TECNOLOGICA BOLIVIANA Y ESTUDIANTE DE SISTEMAS INFORMATICOS DEL INSTITUTO TECNOLOGICO MARCELO QUIROGA SANTA CRUZ
+                  </p>
+            </div>
+      </div>
+      <script type="text/javascript">
+      $(document).ready(function() {
+            $(".menu-icon").on("click", function() {
+                  $("nav ul").toggleClass("showing");
+            });
+      });
+      $(window).on("scroll", function() {
+            if($(window).scrollTop()) {
+                  $('nav').addClass('black');
+            }
+            else {
+                  $('nav').removeClass('black');
+            }
+      })
+      </script>
+      <footer class="page-footer font-small cyan darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 py-5">
+          <div class="mb-5 flex-center">
+            <center><a class="media">
+              <i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a class="media">
+              <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a class="media">
+              <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a class="media">
+              <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <a class="media">
+              <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+            </a></center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script type="js/jquery-3.3.1.min.js"></script>
+    <script type="js/popper.min.js"></script>
+    <script type="js/bootstrap.min.js"></script>
+</body>
+</html>
