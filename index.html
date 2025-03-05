@@ -1,77 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>ECV</title>
-      <link rel="stylesheet" href="css/index.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿QUIERES INICIAR UNA HISTORIA JUNTOS?</title>
+    <title>Tiempo juntos ❤️</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
             margin-top: 100px;
-            background-image: url('fondo.jpg');
+            background-image: url('fondo.jpg'); /* Cambia 'fondo.jpg' por la ruta de tu imagen */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-        }
-        #contenedor {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        button {
-            font-size: 16px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        #btnSi {
-            background-color: green;
-            color: white;
-            font-size: 16px;
-        }
-        #btnNo {
-            background-color: red;
             color: white;
         }
-
+        #contador {
+            font-size: 24px;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>¿QUIERES INICIAR UNA HISTORIA JUNTOS?</h1>
-    <div id="contenedor">
-        <button id="btnSi" onclick="aceptar()">Sí</button>
-        <button id="btnNo" onclick="hacerMasGrande()">No</button>
-    </div>
+    <h1>¡Desde este momento estamos juntos! ❤️</h1>
+    <div id="contador">0 años, 0 días, 0 horas, 0 minutos, 0 segundos</div>
 
     <script>
-        let btnSi = document.getElementById("btnSi");
-        let btnNo = document.getElementById("btnNo");
-        let tamano = 16;
+        const inicio = new Date("2025-02-15T14:34:00");
 
-        function hacerMasGrande() {
-            tamano += 10;
-            btnSi.style.fontSize = tamano + "px";
-            btnSi.style.padding = (tamano / 2) + "px " + (tamano) + "px";
+        function actualizarContador() {
+            const ahora = new Date();
+            const diferencia = ahora - inicio;
+            
+            const segundos = Math.floor(diferencia / 1000) % 60;
+            const minutos = Math.floor(diferencia / (1000 * 60)) % 60;
+            const horas = Math.floor(diferencia / (1000 * 60 * 60)) % 24;
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24)) % 365;
+            const años = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365));
+            
+            document.getElementById("contador").innerText = `${años} años, ${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
         }
-
-        function aceptar() {
-            window.location.href = "contador.html";
-        }
+        
+        setInterval(actualizarContador, 1000);
     </script>
-    <script type="js/jquery-3.3.1.min.js"></script>
-    <script type="js/popper.min.js"></script>
-    <script type="js/bootstrap.min.js"></script>
 </body>
 </html>
