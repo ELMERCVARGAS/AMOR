@@ -31,22 +31,46 @@
     <div id="contador">0 años, 0 días, 0 horas, 0 minutos, 0 segundos</div>
 
     <script>
-        const inicio = new Date("2025-02-15T14:34:30");
+    const inicio = new Date("2025-02-15T14:34:30");
 
-        function actualizarContador() {
-            const ahora = new Date();
-            const diferencia = ahora - inicio;
-            
-            const segundos = Math.floor(diferencia / 1000) % 60;
-            const minutos = Math.floor(diferencia / (1000 * 60)) % 60;
-            const horas = Math.floor(diferencia / (1000 * 60 * 60)) % 24;
-            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24)) % 365;
-            const años = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365));
-            
-            document.getElementById("contador").innerText = `${años} años, ${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+    function actualizarContador() {
+        const ahora = new Date();
+        
+        let años = ahora.getFullYear() - inicio.getFullYear();
+        let meses = ahora.getMonth() - inicio.getMonth();
+        let dias = ahora.getDate() - inicio.getDate();
+        let horas = ahora.getHours() - inicio.getHours();
+        let minutos = ahora.getMinutes() - inicio.getMinutes();
+        let segundos = ahora.getSeconds() - inicio.getSeconds();
+        
+        // Ajustar valores negativos
+        if (segundos < 0) {
+            segundos += 60;
+            minutos--;
+        }
+        if (minutos < 0) {
+            minutos += 60;
+            horas--;
+        }
+        if (horas < 0) {
+            horas += 24;
+            dias--;
+        }
+        if (dias < 0) {
+            meses--;
+            let ultimoDiaMesPasado = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
+            dias += ultimoDiaMesPasado; // Ajusta según el mes anterior
+        }
+        if (meses < 0) {
+            meses += 12;
+            años--;
         }
         
-        setInterval(actualizarContador, 1000);
-    </script>
+        document.getElementById("contador").innerText = `${años} años, ${meses} meses, ${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+    }
+    
+    setInterval(actualizarContador, 1000);
+</script>
+<h1>¡TE EXTRAÑO YA QUIERO QUE SEA MAÑANA PARA PODER VERTE MI AMOR! ❤️</h1>
 </body>
 </html>
