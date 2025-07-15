@@ -17,7 +17,7 @@
             color: black;
         }
         #contador {
-            font-size: 24px;
+            font-size: 20px;
             margin-top: 20px;
             background: rgba(0, 0, 0, 0);
             display: inline-block;
@@ -25,7 +25,7 @@
             border-radius: 10px;
         }
         #mensajeEspecial {
-            font-size: 24px;
+            font-size: 20px;
             margin-top: 20px;
             background: rgba(0, 0, 0, 0);
             display: inline-block;
@@ -42,14 +42,14 @@
     </style>
 </head>
 <body>
-    <h2>¡ESTA HISTORIA NO TENDRA UN FINAL! ❤️</h2>
+    <h2>❤️ ¡ESTA HISTORIA NO TENDRA UN FINAL! ❤️</h2>
     <div id="contador"> CALCULANDO... </div>
-    <h3>¡GRACIAS POR UN DIA MAS A TU LADO! ❤️</h3>
+    <h3>❤️ ¡GRACIAS POR UN DIA MAS A TU LADO! ❤️</h3>
     <div id="mensajeEspecial"></div>
     <canvas id="canvas"></canvas>
     <script>
     const inicio = new Date("2025-02-15T14:34:30");
-
+    let fuegosActivados = false;//CODIGO FUEGOS ARTIFICIALES
     function actualizarContador() {
         const ahora = new Date();
         
@@ -88,7 +88,7 @@
         // Mostrar mensaje si se cumplen exactamente 5 meses
           if (!fuegosActivados && años === 0 && meses === 5 && dias === 0 && horas === 0 && minutos === 0 && segundos === 0) {
         fuegosActivados = true;
-        document.getElementById("mensajeEspecial").innerText = "🎉 ¡Feliz 5 meses, amor! ❤️";
+        document.getElementById("mensajeEspecial").innerText = "🎉 ¡FELIZ ANIVERSARIO AMORCITO! 🎉";
         lanzarFuegosArtificiales();
       }
     }
@@ -103,7 +103,7 @@
       canvas.height = window.innerHeight;
 
       const particles = [];
-
+        
       function crearParticula(x, y) {
         for (let i = 0; i < 100; i++) {
           particles.push({
