@@ -24,12 +24,29 @@
             padding: 10px;
             border-radius: 10px;
         }
+        #mensajeEspecial {
+            font-size: 24px;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0);
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
     </style>
 </head>
 <body>
     <h2>¡ESTA HISTORIA NO TENDRA UN FINAL! ❤️</h2>
     <div id="contador"> CALCULANDO... </div>
-    <h3>¡FELIZ POR CUMPLIR OTRO MES A TU LADO! ❤️</h3>
+    <h3>¡GRACIAS POR UN DIA MAS A TU LADO! ❤️</h3>
+    <div id="mensajeEspecial"></div>
+    <canvas id="canvas"></canvas>
     <script>
     const inicio = new Date("2025-02-15T14:34:30");
 
@@ -67,9 +84,69 @@
         }
         
         document.getElementById("contador").innerText = `${años} años, ${meses} meses, ${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+
+        // Mostrar mensaje si se cumplen exactamente 5 meses
+          if (!fuegosActivados && años === 0 && meses === 5 && dias === 0 && horas === 0 && minutos === 0 && segundos === 0) {
+        fuegosActivados = true;
+        document.getElementById("mensajeEspecial").innerText = "🎉 ¡Feliz 5 meses, amor! ❤️";
+        lanzarFuegosArtificiales();
+      }
     }
     
     setInterval(actualizarContador, 1000);
+
+// INICIO FUEGOS ARTIFICIALES
+    function lanzarFuegosArtificiales() {
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+
+      function crearParticula(x, y) {
+        for (let i = 0; i < 100; i++) {
+          particles.push({
+            x: x,
+            y: y,
+            vx: (Math.random() - 0.5) * 5,
+            vy: (Math.random() - 0.5) * 5,
+            alpha: 1,
+            color: `hsl(${Math.random() * 360}, 100%, 60%)`
+          });
+        }
+      }
+
+      function animar() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((p, i) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.alpha -= 0.01;
+          if (p.alpha <= 0) particles.splice(i, 1);
+
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI);
+          ctx.fill();
+        });
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(animar);
+      }
+
+      // Crear fuegos en intervalos aleatorios
+      setInterval(() => {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height / 2;
+        crearParticula(x, y);
+      }, 600);
+
+      animar();
+    }
+        //FIN JUEGOS ARTIFICIALES
 </script>
 </body>
 </html>
