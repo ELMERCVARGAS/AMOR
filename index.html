@@ -44,12 +44,16 @@
 <body>
     <h2>❤️ ¡ESTA HISTORIA NO TENDRA UN FINAL! ❤️</h2>
     <div id="contador"> CALCULANDO... </div>
-    <h3>❤️ GRACIAS POR UN DIA MAS A TU LADO, ¡TE AMO! ❤️</h3>
+    <h3>❤️ VIDITA FELIZ 21 DE SEPTIEMBRE ¡TE AMO! ❤️</h3>
     <div id="mensajeEspecial"></div>
     <canvas id="canvas"></canvas>
+    
     <script>
     const inicio = new Date("2025-02-15T14:34:30");
-    let fuegosActivados = false;//CODIGO FUEGOS ARTIFICIALES
+    let fuegosActivados = false;
+    
+        //INICIO FUEGOS ARTIFICIALES
+
     function actualizarContador() {
         const ahora = new Date();
         
@@ -85,7 +89,8 @@
         
         document.getElementById("contador").innerText = `${años} años, ${meses} meses, ${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
 
-        // Mostrar mensaje si se cumplen exactamente 5 meses
+             // MUESTRA MENSAJE SI SE CUMPLE X TIEMPO
+
           if (!fuegosActivados && años === 0 && meses === 6 && dias === 0 && horas === 0 && minutos === 0 && segundos === 0) {
         fuegosActivados = true;
         document.getElementById("mensajeEspecial").innerText = "🎉 ¡FELIZ ANIVERSARIO AMORCITO! 🎉";
@@ -95,7 +100,8 @@
     
     setInterval(actualizarContador, 1000);
 
-// INICIO FUEGOS ARTIFICIALES
+            // INICIO FUEGOS ARTIFICIALES
+
     function lanzarFuegosArtificiales() {
       const canvas = document.getElementById("canvas");
       const ctx = canvas.getContext("2d");
@@ -137,7 +143,7 @@
         requestAnimationFrame(animar);
       }
 
-      // Crear fuegos en intervalos aleatorios
+      // CREA JUEGOS ARTIFICALES DE FORMA ALEATORIA
       setInterval(() => {
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height / 2;
@@ -146,7 +152,72 @@
 
       animar();
     }
-        //FIN JUEGOS ARTIFICIALES
+
+            //FIN JUEGOS ARTIFICIALES
+
+            //INICIO FLORES 21 DE SEPTIEMBRE
+
 </script>
+<style>
+    #sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* no bloquea clics */
+      z-index: 9999;
+    }
+
+    .flower {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: url("flores.png") no-repeat center/contain;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="sky"></div>
+
+<script>
+  const sky = document.getElementById("sky");
+
+  function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+
+    // posición horizontal aleatoria
+    flower.style.left = Math.random() * window.innerWidth + "px";
+
+    // duración aleatoria de la caída
+    const duration = 4 + Math.random() * 5;
+    flower.style.animationDuration = duration + "s";
+
+    // tamaño aleatorio
+    const size = 40 + Math.random() * 40;
+    flower.style.width = size + "px";
+    flower.style.height = size + "px";
+
+    sky.appendChild(flower);
+
+    // eliminar después de terminar animación
+    setTimeout(() => flower.remove(), duration * 1000);
+  }
+
+  // generar flores cada cierto tiempo
+  setInterval(createFlower, 500);
+
+        // FIN FLORES 21 DE SEPTIEMBRE
+
+</script>           
 </body>
 </html>
