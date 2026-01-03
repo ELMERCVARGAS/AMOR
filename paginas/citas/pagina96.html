@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMOR ❤️</title>
+    <link rel="icon" href="./favicon.png" type="image/png">
+</head>
+<body>
+
+
+<style>
+        body {
+            text-align: center;
+            font-family: Consolas, sans-serif;
+            margin-top: 100px;
+            background-image: url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+.contenedor {
+    position: relative;
+    padding: 80px;
+    border-radius: 25px;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.90);
+    width: 400px;
+    height: 650px;
+    overflow: hidden;
+
+  }
+
+  /* Imágenes superpuestas */
+  .img1, .img2 {
+    position: absolute;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .img1 {
+    top: 20px;
+    left: 20px;
+    width: 280px;
+    z-index: 1;
+  }
+
+  .img2 {
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    z-index: 2;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+  }
+
+  .img1:hover, .img2:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+
+  /* Popup de imagen */
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+  }
+
+  .cerrar {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .cerrar:hover {
+    color: #ff8080;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="contenedor">
+
+  <img src="citas/cita961.jpg" alt="Foto 1" class="img1" onclick="abrirPopup(this)">
+  <img src="citas/cita962.jpg" alt="Foto 2" class="img2" onclick="abrirPopup(this)">
+</div>
+
+<!-- Popup de imagen -->
+<div id="popup" class="popup" onclick="cerrarPopup()">
+  <span class="cerrar">&times;</span>
+  <img id="popupImg">
+</div>
+
+<script>
+function abrirPopup(img) {
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("popupImg").src = img.src;
+}
+function cerrarPopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>
+
+
+
