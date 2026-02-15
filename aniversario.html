@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pergamino Cinematográfico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=IM+Fell+English&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    background-image: url('fondo.jpg'); /* Cambia 'fondo.jpg' por la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'IM Fell English', serif;
+}
+
+/* PERGAMINO */
+.pergamino {
+    width: 100%;
+    max-width: 750px;
+    padding: clamp(30px, 6vw, 70px);
+    background-image: url('collar.jpg'),
+        linear-gradient(145deg, #f8ecd2, #e2cfa0);
+        background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    position: relative;
+    box-shadow:
+        0 0 60px rgba(0,0,0,0.8),
+        inset 0 0 80px rgba(0,0,0,0.4);
+}
+
+/* BORDES OSCUROS */
+.pergamino::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0));
+    pointer-events: none;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    margin-bottom: 40px;
+    color: #ffffff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* TEXTO */
+#texto {
+    font-size: clamp(10px, 3.5vw, 22px);
+    line-height: 1.5;
+    color: #ffffff;
+    white-space: pre-wrap;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* CURSOR */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: #4a2f14;
+    margin-left: 3px;
+    animation: blink 0.8s infinite;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.firma {
+    margin-top: 60px;
+    text-align: right;
+    font-style: italic;
+    font-size: clamp(18px, 4vw, 24px);
+    color: #ffffff;
+
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div class="pergamino">
+    <h1>Feliz Aniversario</h1>
+
+    <div id="texto"></div><span class="cursor" id="cursor"></span>
+
+    <div class="firma" id="firma">
+        Tu novio que te ama ❤️
+    </div>
+</div>
+
+<script>
+const texto = `Mi nenita hermosa...
+Gracias por un año maravilloso, por un año lleno de aprendizaje, lleno de retos, lleno de risas y hasta de momentos tristes, pero por sobre todo lleno de amor, respeto y paciencia.
+Donde conocí más aún a una mujer increíble, llena de virtudes, llena de valores, llena de alegria, llena de cariño, llena de sabiduría quien me acerca más a Dios.
+Gracias por aconsejarme, por reconocer mis logros, por corregirme si me equivoco, pero por sobre todo amarme con ese corazón tan bello.
+Gracias por este año lleno de planes, lleno de ilusiones, lleno de convicción por lograr lo que queremos y sé que con la ayuda de Dios lograremos.
+Gracias por esta relación tan hermosa, llena de comunicación, llena de confianza, llena de metas y de objetivos por cumplir.
+Gracias por dejarme compartir este año contigo, espero poder cumplir y celebrar muchos mas años juntos, porque de algo estoy seguro es que te quiero para toda la vida.
+Gracias por ser mi fuerza cada mañana al despertar y gracias por ser mi fortaleza para afrontar las dificultades de la vida.
+Gracias por llegar a mi vida cuando ni yo sabía que te necesitaba para darle sentido.
+Gracias por ser mi hogar, por ser mi mejor amiga, mi compañera, en fin, el amor de mi vida.
+Y por último Gracias Dios por este año de relación que sean muchos mas años llenos de bendeción. `;
+
+const velocidad = 60; // menor número = más rápido
+let i = 0;
+
+function escribir() {
+    if (i < texto.length) {
+        document.getElementById("texto").innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(escribir, velocidad);
+    } else {
+        // Ocultar cursor
+        document.getElementById("cursor").style.display = "none";
+        // Mostrar firma suavemente
+        document.getElementById("firma").style.opacity = "1";
+    }
+}
+
+// Inicia al cargar
+window.onload = escribir;
+</script>
+
+</body>
+</html>
