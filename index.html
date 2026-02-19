@@ -62,7 +62,6 @@
 <body>
     <h1>❤️ ¡ESTA HISTORIA NO TENDRA UN FINAL! ❤️</h1>
     <div id="contador"> CALCULANDO... </div>
-<button class="btn" onclick="location.href='aniversario.html'">PRIMER ANIVERSARIO</button>
 
     <h3>❤️ ¡TE AMO! CADA DIA MAS ❤️</h3>
 
@@ -114,7 +113,7 @@
 
              // MUESTRA MENSAJE SI SE CUMPLE X TIEMPO
 
-          if (!fuegosActivados && años === 1) {
+          if (!fuegosActivados && años === 1 && meses === 0 && dias === 0 && horas === 0 && minutos === 0 && segundos === 0) {
         fuegosActivados = true;
         document.getElementById("mensajeEspecial").innerText = "🎉 ¡FELIZ ANIVERSARIO AMORCITO! 🎉";
 
