@@ -69,7 +69,148 @@
     <button class="btn" onclick="location.href='citas.html'">LISTA DE CITAS</button>
 
     <canvas id="canvas"></canvas>
+
+
     
+<!-- REPRODUCTOR DE MÚSICA -->
+<div class="music-card">
+
+    <img src="portada.jpeg" class="music-cover" alt="Portada">
+
+    <div class="music-info">
+        <h3>EL ULTIMO AMOR</h3>
+        <p>Luis Vega</p>
+    </div>
+
+    <audio id="music" src="cancion.mp3"></audio>
+
+    <div class="music-controls">
+        <button onclick="toggleMusic()" id="playBtn">▶</button>
+    </div>
+
+    <div class="music-progress">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progress" value="0" min="0" max="100">
+        <span id="duration">0:00</span>
+    </div>
+
+</div>
+
+<style>
+.music-card {
+    width: 300px;
+    margin: 30px auto;
+    padding: 22px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.music-cover {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.music-info h3 {
+    font-size: 19px;
+    margin: 15px 0 5px;
+}
+
+.music-info p {
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 18px;
+}
+
+.music-controls button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: #D60F0F;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.music-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 11px;
+    color: #777;
+}
+
+.music-progress input {
+    flex: 1;
+    min-width: 0;
+    accent-color: #D60F0F;
+    cursor: pointer;
+}
+</style>
+
+<script>
+const music = document.getElementById("music");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
+
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+        playBtn.textContent = "❚❚";
+    } else {
+        music.pause();
+        playBtn.textContent = "▶";
+    }
+}
+
+function formatTime(seconds) {
+    if (!Number.isFinite(seconds)) return "0:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return m + ":" + String(s).padStart(2, "0");
+}
+
+music.addEventListener("loadedmetadata", () => {
+    document.getElementById("duration").textContent =
+        formatTime(music.duration);
+});
+
+music.addEventListener("timeupdate", () => {
+    if (music.duration) {
+        progress.value =
+            (music.currentTime / music.duration) * 100;
+
+        document.getElementById("currentTime").textContent =
+            formatTime(music.currentTime);
+    }
+});
+
+progress.addEventListener("input", () => {
+    if (music.duration) {
+        music.currentTime =
+            (progress.value / 100) * music.duration;
+    }
+});
+
+music.addEventListener("ended", () => {
+    playBtn.textContent = "▶";
+    progress.value = 0;
+});
+</script>
+
+<!-- FIN REPRODUCTOR DE MÚSICA -->
+
+
+
+
     <script>
     const inicio = new Date("2025-02-15T14:34:30");
     let fuegosActivados = false;
